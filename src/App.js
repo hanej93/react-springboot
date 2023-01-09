@@ -1,42 +1,36 @@
-import { useEffect, useMemo, useState } from 'react';
+import { createRef, useEffect, useMemo, useRef, useState } from 'react';
 import './App.css';
 
+// useRef (디자인)
+// dom을 변경할 때 사용
+
 function App() {
-  const [list, setList] = useState([1, 2, 3, 4]);
-  const [str, setStr] = useState('합계');
+  const myRef = useRef(null);
 
-  const getAddResult = () => {
-    console.log('SUM 함수실행됨');
-    return list.reduce((a, b) => a + b);
-  };
+  const [list, listSet] = useState([
+    { id: 1, name: '길동' },
+    { id: 2, name: '꺽정' },
+  ]);
 
-  const addResult = useMemo(() => getAddResult(), [list]);
+  const myRefs = Array.from({ length: list.length }).map(() => createRef());
 
   return (
-    <>
+    <div>
       <button
         onClick={() => {
-          setStr('안녕');
+          console.log(myRef);
+          // myRef.current.style.backgroundColor = 'red';
+
+          myRefs[0].current.style.backgroundColor = 'red';
         }}
       >
-        문자변경
+        색 변경
       </button>
-      <button
-        onClick={() => {
-          setList([...list, 10]);
-        }}
-      >
-        리스트값 추가
-      </button>
-      <div>
-        {list.map((v) => (
-          <h1>{v}</h1>
-        ))}
-      </div>
-      <div>
-        {str} : {addResult}
-      </div>
-    </>
+      <div ref={myRef}>박스</div>
+      {list.map((user, idx) => (
+        <h1 ref={myRefs[idx]}>{user.name}</h1>
+      ))}
+    </div>
   );
 }
 
