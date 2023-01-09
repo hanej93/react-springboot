@@ -14,23 +14,15 @@ import './App.css';
 //      - 외부파일에 넣는 방법
 //      - 라이브러리 사용(부트스트랩, component-styled)
 
-let a = 10;
-const b = 20;
-
 function App() {
-  let c;
-  let d = undefined;
-  console.log(1, c, d);
-
-  const myStyle = {
-    color: 'red',
-  }
-
+  let list = [1, 2, 3];
   return (
     <>
-      <div style={myStyle}>안녕 {a === 10 ? '10입니다.' : '10이 아닙니다.'}</div>
-      <h1 className='box-style'>헬로{b === 20 && '20입니다.'}</h1>
-      <hr />
+      <div>
+        {list.map((n) => (
+          <h1>{n}</h1>
+        ))}
+      </div>
     </>
   );
 }
