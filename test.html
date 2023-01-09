@@ -1,61 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <script>
-        // concat, filter, map, slice, 스프레드(전개) 연산자
+      // concat, filter, map, slice, 스프레드(전개) 연산자
 
-        console.log("1. ================== 스프레드 연산자");
-        const a = [1,2,3];
-        const b = [...a];
-        
-        b.push(4); // 데이터 변경
-        console.log(`a의 값은 ${a}`); //1 2 3
-        console.log(`b의 값은 ${b}`); //1 2 3 4
+      console.log('1. ================== 스프레드 연산자');
+      const a = [1, 2, 3];
+      const b = [...a];
 
+      b.push(4); // 데이터 변경
+      console.log(`a의 값은 ${a}`); //1 2 3
+      console.log(`b의 값은 ${b}`); //1 2 3 4
 
-        console.log("2. ================== 추가하기 (concat)");
-        const a2 = [1,2,3];
-        const b2 = a2.concat(4);
-        console.log(`a2의 값은 ${a2}`); // 1 2 3
-        console.log(`b2의 값은 ${b2}`); // 1 2 3 4
+      console.log('2. ================== 추가하기 (concat)');
+      const a2 = [1, 2, 3];
+      const b2 = a2.concat(4);
+      console.log(`a2의 값은 ${a2}`); // 1 2 3
+      console.log(`b2의 값은 ${b2}`); // 1 2 3 4
 
-        // 스프레드 연산자로 추가
-        const c2 = [0, ...a2, 4];
-        console.log(`c2의 값은 ${c2}`); //0 1 2 3 4
+      // 스프레드 연산자로 추가
+      const c2 = [0, ...a2, 4];
+      console.log(`c2의 값은 ${c2}`); //0 1 2 3 4
 
+      console.log('3. ================== 걸러내기 (filter)');
+      const a3 = [1, 2, 3];
+      const b3 = a3.filter((v) => {
+        return v !== 1;
+      });
+      console.log(`a3의 값은 ${a3}`); // 1 2 3
+      console.log(`b3의 값은 ${b3}`); // 2 3
 
-        console.log("3. ================== 걸러내기 (filter)");
-        const a3 = [1,2,3];
-        const b3 = a3.filter((v)=> {return v !== 1;});
-        console.log(`a3의 값은 ${a3}`); // 1 2 3
-        console.log(`b3의 값은 ${b3}`); // 2 3
-        
-        
-        console.log("4. ================== 잘라내기 (slice)");
-        const a4 = [1,2,3];
-        const b4 = a4.slice(0, 2);
-        console.log(`a4의 값은 ${a4}`); // 1 2 3
-        console.log(`b4의 값은 ${b4}`); // [1, 2]
-        
-        const c4 = [...a4.slice(0, 2), 4, ...a4.slice(2, 3)]
-        console.log(`c4의 값은 ${c4}`); // [[1, 2]]
+      console.log('4. ================== 잘라내기 (slice)');
+      const a4 = [1, 2, 3];
+      const b4 = a4.slice(0, 2);
+      console.log(`a4의 값은 ${a4}`); // 1 2 3
+      console.log(`b4의 값은 ${b4}`); // [1, 2]
 
-        console.log("5. ================== 반복하기 (map)");
-        const a5 = [1,2,3];
+      const c4 = [...a4.slice(0, 2), 4, ...a4.slice(2, 3)];
+      console.log(`c4의 값은 ${c4}`); // [[1, 2]]
 
-        a5.forEach((v) => {console.log(v)}); // return type void
+      console.log('5. ================== 반복하기 (map)');
+      const a5 = [1, 2, 3];
 
-        const b5 = a5.map((v)=>{return v*2;});
-        console.log(`a5의 값은 ${a5}`); // 1 2 3
-        console.log(`b5의 값은 ${b5}`); // 2 4 6
+      a5.forEach((v) => {
+        console.log(v);
+      }); // return type void
 
+      const b5 = a5.map((v) => {
+        return v * 2;
+      });
+      console.log(`a5의 값은 ${a5}`); // 1 2 3
+      console.log(`b5의 값은 ${b5}`); // 2 4 6
 
+      console.log('6. ================== 수정하기');
+      const data = { phone: '2222' };
+      const a6 = {
+        id: 2,
+        name: '홍길동',
+        phone: '1111',
+        age: 17,
+        gender: '남',
+      };
+      const b6 = { ...a6, name: '임꺽정', ...data }; // 뒤에가 덮어씌우는 방식
+      console.log(b6);
+
+      const users = [
+        { id: 1, name: '구태모', phone: '2222' },
+        { id: 2, name: '이대엽', phone: '3333' },
+        { id: 3, name: '오승훈', phone: '4444' },
+      ];
+      const updateUserDto = {
+        id: 2,
+        name: '홍길동',
+      };
+
+      const newUser = users.map((u) => {
+        return u.id === updateUserDto.id ? { ...u, ...updateUserDto } : u;
+      });
+
+      console.log(newUser);
     </script>
-</body>
+  </body>
 </html>
