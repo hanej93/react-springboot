@@ -1,14 +1,13 @@
 import React from 'react';
-import Footer from '../components/Footer';
-import Header from '../components/Header';
+import { useNavigate } from 'react-router-dom';
 import Login from '../components/login/Login';
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   return (
     <>
-      <Header />
+      <button onClick={() => navigate('/')}>뒤로가기</button>
       <Login />
-      <Footer />
     </>
   );
 };

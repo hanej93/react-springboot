@@ -5,6 +5,7 @@ const StyledDeleteButton = styled.button`
   color: ${(props) => (props.user.username === 'ssar' ? 'blue' : 'red')};
 `;
 
+// 스타일 확장
 const StyledAddButton = styled(StyledDeleteButton)`
   background-color: green;
 `;
@@ -25,7 +26,7 @@ const Home = (props) => {
       </StyledDeleteButton>
       {boards.map((board) => {
         return (
-          <h3>
+          <h3 key={board.id}>
             제목: {board.title} 내용: {board.content}
           </h3>
         );
