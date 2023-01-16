@@ -1,19 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import { Route, Routes } from 'react-router-dom';
+import Navigation from './components/Navigation';
+import ListPage from './pages/ListPage';
+import WritePage from './pages/WritePage';
+
+// 글쓰기, 글삭제, 글목록보기
 
 function App() {
   return (
     <>
-      <Header />
+      <Navigation />
       <Routes>
-        <Route path="/" exact element={<HomePage />} />
-        <Route path="/login/:id" exact element={<LoginPage />} />
+        <Route path="/" exact element={<ListPage />} />
+        <Route path="/write" exact element={<WritePage />} />
       </Routes>
-      <Footer />
     </>
   );
 }
