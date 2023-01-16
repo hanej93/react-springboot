@@ -30,14 +30,13 @@ const ListPage = () => {
 
   const handleWrite = (e) => {
     e.preventDefault(); // form태그가 하려는 액션을 중지
-    setPosts([...posts, { ...post, id: no }]);
+    setPosts([...posts, { ...post, id: no }]); // setState() 비동기로 동작 주의
     setNo(no + 1);
   };
 
   const handleForm = (e) => {
     // compute property names (key 값을 동적할당)
     setPost({ ...post, [e.target.name]: e.target.value });
-    console.log(`아이디: ${post.id} 제목: ${post.title} // 내용: ${post.content}`);
   };
 
   return (
