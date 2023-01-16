@@ -30,15 +30,14 @@ const ListPage = () => {
 
   const handleWrite = (e) => {
     e.preventDefault(); // form태그가 하려는 액션을 중지
-    setPosts([...posts, post]);
+    setPosts([...posts, { ...post, id: no }]);
     setNo(no + 1);
-    setPost({ ...post, id: no });
   };
 
   const handleForm = (e) => {
     // compute property names (key 값을 동적할당)
-    setPost({ ...post, [e.target.name]: e.target.value, id: no });
-    console.log(`제목: ${post.title} // 내용: ${post.content}`);
+    setPost({ ...post, [e.target.name]: e.target.value });
+    console.log(`아이디: ${post.id} 제목: ${post.title} // 내용: ${post.content}`);
   };
 
   return (
@@ -51,7 +50,7 @@ const ListPage = () => {
       </form>
       <hr />
       {posts.map((post) => (
-        <StyledItemBoxDiv key={post.id}>
+        <StyledItemBoxDiv key={post.id + post.title}>
           <div>
             NO: {post.id} TITLE: {post.title} CONTENT: {post.content}
           </div>
