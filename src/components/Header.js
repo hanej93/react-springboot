@@ -34,11 +34,19 @@ const Header = () => {
       <>
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Navbar</Navbar.Brand>
+            <Link to="/" className="navbar-brand">
+              Navbar
+            </Link>
             <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#features">Features</Nav.Link>
-              <Nav.Link href="#pricing">Pricing</Nav.Link>
+              <Link to="/" className="nav-link">
+                홈
+              </Link>
+              <Link to="/login/10" className="nav-link">
+                로그인
+              </Link>
+              {/* <Nav.Link href="/">Home</Nav.Link>
+              <Nav.Link href="/login/10">Features</Nav.Link>
+              <Nav.Link href="#pricing">Pricing</Nav.Link> */}
             </Nav>
           </Container>
         </Navbar>
