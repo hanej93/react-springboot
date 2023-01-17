@@ -14,7 +14,7 @@ spring:
   jpa:
     open-in-view: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         # 내가 지은 그대로 이름이 만들어지는 전략
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
