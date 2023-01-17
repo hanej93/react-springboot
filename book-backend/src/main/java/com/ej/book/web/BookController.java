@@ -24,6 +24,7 @@ public class BookController {
 	
 	private final BookService bookService;
 	
+	@CrossOrigin
 	@PostMapping("/book")
 	public ResponseEntity<?> save(@RequestBody Book book) {
 		Book newBook = bookService.저장하기(book);
