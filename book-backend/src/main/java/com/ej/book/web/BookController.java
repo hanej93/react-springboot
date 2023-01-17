@@ -24,6 +24,8 @@ public class BookController {
 	
 	private final BookService bookService;
 	
+	// security (라이브러리 적용) - CORS 정책을 가지고 있음(시큐리티가 CORS를 해제)
+	// BockController 진입직전
 	@CrossOrigin
 	@PostMapping("/book")
 	public ResponseEntity<?> save(@RequestBody Book book) {
@@ -38,18 +40,21 @@ public class BookController {
 		return new ResponseEntity<>(books, HttpStatus.OK); // 200
 	}
 	
+	@CrossOrigin
 	@GetMapping("/book/{id}")
 	public ResponseEntity<?> findById(@PathVariable Long id) {
 		Book book = bookService.한건가져오기(id);
 		return new ResponseEntity<>(book, HttpStatus.OK); // 200
 	}
 	
+	@CrossOrigin
 	@PutMapping("/book/{id}")
 	public ResponseEntity<?> update(@PathVariable Long id, @RequestBody Book book) {
 		Book newBook = bookService.수정하기(id, book);
 		return new ResponseEntity<>(newBook, HttpStatus.OK); // 200
 	}
 	
+	@CrossOrigin
 	@DeleteMapping("/book/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable Long id) {
 		String status = bookService.삭제하기(id);

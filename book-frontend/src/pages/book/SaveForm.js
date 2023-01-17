@@ -41,6 +41,7 @@ const SaveForm = () => {
         }
         navigate('/');
       });
+    // catch(): then 에서 오류가 났을 경우 실행
   };
 
   return (
